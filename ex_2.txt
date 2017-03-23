@@ -1,0 +1,19 @@
+import subprocess, re, sys, os
+HANDLE_EXE = 'handle'
+for i,fn in enumerate(sys.argv): 
+	if i == 0:
+		continue
+	if not os.path.exists(fn) :
+		continue
+	# print fn
+	p = subprocess.Popen([HANDLE_EXE, fn], stdout=subprocess.PIPE, shell=True)
+
+	(output, err) = p.communicate()
+
+	p_status = p.wait()
+	handles = re.findall('pid:\s+(\d+)\s+type: \w+\s+([0-9A-Z]+): ', output)
+
+	for v in handles:
+		return print(v)
+
+	input('Press <Enter> to exit')
