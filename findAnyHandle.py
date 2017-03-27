@@ -12,7 +12,7 @@ for i,fn in enumerate(sys.argv):
 	output = subprocess.check_output([HANDLE_EXE, fn]).decode("utf-8")
 
 	# handles = re.findall('(\S+)\s+ pid:\s+(\d+)\s+type: \w+\s+([0-9A-Z]+): ', output)
-	handles = re.findall('(\S+)\s+ pid:\s+(\d+)\s+type: \w+\s+[0-9A-Z]+:\s+(\S+)', output)
+	handles = re.findall('(\S+)\s+ pid:\s+(\d+)\s+type: \w+\s+[0-9A-Z]+:\s+(.*)', output)
 	# handles = re.findall('(\S+)\s+ pid:\s+(\d+)', output)
 
 	handles = set(handles)
