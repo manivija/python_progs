@@ -32,35 +32,42 @@
 #input = ["1.1.2", "1.0", "1.3.3", "1.0.12", "1.0.2"]
 #input = ["1.11", "2.0.0", "1.2", "2", "0.1", "1.2.1", "1.1.1", "2.0"]
 #input = ["1.0.0", "1.0", "1.0"]
-#input = ["2.12.0", "0.2.99", "2.5.0", "2.5.1", "2.0.1", "2.0", "2.0.0", "2","2.0","0.1.19", "1.19.18", "0.19", "0.19.10"]
+input = ["2.12.0", "0.2.99", "2.5.0", "2.5.1", "2.0.1", "2.0", "2.0.0", "2","2.0","0.1.19", "1.19.18", "0.19", "0.19.10"]
 
 def answer(input):
-	print(input)
-	maxEntrySize = max([ (max([len(v) for v in e.split(".")])) for e in input])
+	for i in input:
+		print([int(b) for b in i.split('.')])
 
-	def eval(str1, maxEntrySize):
+	input.sort(key=lambda a : [int(b) for b in a.split('.')])
+	return input
 
-		def compute(v, i, maxEntrySize, zeroCase):
-			raised = maxEntrySize + i * 3
-			if i == 0:
-				if zeroCase:
-					return (v - 0.1)/(10**raised)
-				else:
-					return v/(10**raised)
-			else:
-				return (v + 0.1)/(10**raised)
+# def answer(input):
+	# print(input)
+	# maxEntrySize = max([ (max([len(v) for v in e.split(".")])) for e in input])
 
-		stringIn = str1
+	# def eval(str1, maxEntrySize):
 
-		if int(stringIn.split(".")[0]) == 0:
-			stringIn = str1[2:]
-			return sum([compute(int(stringIn.split(".")[i]),i,maxEntrySize, True) for i in range(len(stringIn.split(".")))])
-		else:
-			return sum([compute(int(stringIn.split(".")[i]),i,maxEntrySize, False) for i in range(len(stringIn.split(".")))])
+		# def compute(v, i, maxEntrySize, zeroCase):
+			# raised = maxEntrySize + i * 3
+			# if i == 0:
+				# if zeroCase:
+					# return (v - 0.1)/(10**raised)
+				# else:
+					# return v/(10**raised)
+			# else:
+				# return (v + 0.1)/(10**raised)
 
-	return sorted(
-		input,
-		key = lambda elem: eval(elem, maxEntrySize)
-	)
+		# stringIn = str1
+
+		# if int(stringIn.split(".")[0]) == 0:
+			# stringIn = str1[2:]
+			# return sum([compute(int(stringIn.split(".")[i]),i,maxEntrySize, True) for i in range(len(stringIn.split(".")))])
+		# else:
+			# return sum([compute(int(stringIn.split(".")[i]),i,maxEntrySize, False) for i in range(len(stringIn.split(".")))])
+
+	# return sorted(
+		# input,
+		# key = lambda elem: eval(elem, maxEntrySize)
+	# )
 
 print(answer(input))
