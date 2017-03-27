@@ -35,7 +35,7 @@
 #input = ["2.12.0", "0.2.99", "2.5.0", "2.5.1", "2.0.1", "2.0", "2.0.0", "2","2.0","0.1.19", "1.19.18", "0.19", "0.19.10"]
 
 def answer(input):
-
+	print(input)
 	maxEntrySize = max([ (max([len(v) for v in e.split(".")])) for e in input])
 
 	def eval(str1, maxEntrySize):
